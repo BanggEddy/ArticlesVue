@@ -1,5 +1,4 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -10,9 +9,15 @@ dotenv.config();
 
 mongoose
   .connect(process.env.DATABASE_ACCESS)
-  .then(() => console.log("bdd connexion actif"))
-  .catch((err) => console.error("erreurs bdd:", err));
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.error("Database connection error:", err));
 
+const app = express();
 app.use(express.json());
 app.use(cors());
-app.listen(4000, () => console.log("port 3000"));
+
+const routes = require("./routes/routes");
+
+app.use("/", routes);
+
+app.listen(4000, () => console.log("Server BackEnd 4000 UP"));
