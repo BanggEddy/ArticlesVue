@@ -1,14 +1,18 @@
 const express = require("express");
+const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 const cors = require("cors");
 
-const app = express();
+mongoose.set("strictQuery", false);
+
+dotenv.config();
+
+mongoose
+  .connect(process.env.DATABASE_ACCESS)
+  .then(() => console.log("bdd connexion actif"))
+  .catch((err) => console.error("erreurs bdd:", err));
 
 app.use(express.json());
 app.use(cors());
-
-const posts = require("./routes/api/posts");
-app.use("/api/posts", posts);
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => console.log(`Server running on port ${port}`));
+app.listen(4000, () => console.log("port 3000"));
