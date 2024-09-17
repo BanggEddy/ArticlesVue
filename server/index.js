@@ -6,7 +6,6 @@ const cors = require("cors");
 mongoose.set("strictQuery", false);
 
 dotenv.config();
-
 mongoose
   .connect(process.env.DATABASE_ACCESS)
   .then(() => console.log("Database connected"))
