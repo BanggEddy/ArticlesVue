@@ -3,6 +3,8 @@ const ArticleModelCopy = require("../models/articles");
 const UsersModelCopy = require("../models/users");
 const Article = require("../models/articles")
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 router.get('/', (req, res) => {
   res.send('Hello World');
@@ -33,17 +35,18 @@ router.get('/articles', async (req, res) => {
 });
 
 
-router.post('/api/register', async (req, res) => {
+router.post('/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const newUsers = new UsersModelCopy({
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    const newUser = new UsersModelCopy({
       username,
       email,
-      password,
+      password: hashedPassword,
     });
 
-    const savedUsers = await newUsers.save();
-    res.status(201).json(savedUsers);
+    const savedUser = await newUser.save();
+    res.status(201).json(savedUser);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

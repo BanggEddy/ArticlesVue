@@ -42,30 +42,34 @@
   </div>
 </template>
 
-
 <script>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 export default {
   data() {
     return {
-      users: {
-        username: '',
-        email: '',
-        password: '',
-      }
+      username: '',
+      email: '',
+      password: '',
     };
   },
   methods: {
     async submitForm() {
       try {
-        const response = await axios.post('http://localhost:3000/api/register', this.users);
-        alert('Bienvenue!');
-        this.users.username = '';
-        this.users.email = '';
-        this.users.password = '';
+        const response = await axios.post('http://localhost:3000/register', {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        });
+        
+        this.username = '';
+        this.email = '';
+        this.password = '';
+
+        this.$router.push('/login'); 
       } catch (error) {
-        console.error('Erreur lors de l"utilisateur:', error);
+        console.error('Erreur lors de l\'inscription:', error);
       }
     }
   }
@@ -73,34 +77,4 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-h2 {
-  margin-bottom: 20px;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-}
-
-.alert {
-  padding: 1rem;
-  border-radius: .375rem;
-}
-
-.alert-success {
-  color: #155724;
-  background-color: #d4edda;
-  border-color: #c3e6cb;
-}
-
-.alert-danger {
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-}
 </style>
