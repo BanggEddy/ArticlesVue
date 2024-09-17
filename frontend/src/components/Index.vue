@@ -53,9 +53,8 @@
     font-size: 1.1rem;
   }
   
-  /* Styles personnalisés pour les cartes */
   .bg-pink {
-    background-color: #f8c6d4; /* Rose clair */
+    background-color: #f8c6d4 !important; 
   }
   
   .text-white {

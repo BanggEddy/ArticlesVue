@@ -43,7 +43,6 @@ export default {
 </script>
 
 <style>
-/* Styles personnalisés pour le formulaire */
 form {
   max-width: 600px;
   margin: auto;

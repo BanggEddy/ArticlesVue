@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-5">
     <h2>Inscription</h2>
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="submitForm">
       <div class="mb-3">
         <label for="username" class="form-label">Nom d'utilisateur</label>
         <input
@@ -42,53 +42,34 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+
+<script>
 import axios from 'axios';
 
-export default defineComponent({
-  name: 'Register',
-  setup() {
-    const username = ref('');
-    const email = ref('');
-    const password = ref('');
-    const message = ref('');
-    const alertClass = ref('');
-
-    const handleSubmit = async () => {
-  console.log('Submitting form with:', {
-    username: username.value,
-    email: email.value,
-    password: password.value
-  });
-
-  try {
-    const response = await axios.post('http://localhost:3000/api/users/register', {
-      username: username.value,
-      email: email.value,
-      password: password.value
-    });
-    console.log('Response:', response.data);
-    message.value = response.data.message;
-    alertClass.value = 'alert-success'; 
-  } catch (error) {
-    console.error('Error details:', error.response ? error.response.data : error.message); 
-    message.value = `Erreur lors de l'inscription: ${error.response ? error.response.data.message : 'Veuillez réessayer.'}`;
-    alertClass.value = 'alert-danger'; 
+export default {
+  data() {
+    return {
+      users: {
+        username: '',
+        email: '',
+        password: '',
+      }
+    };
+  },
+  methods: {
+    async submitForm() {
+      try {
+        const response = await axios.post('http://localhost:3000/api/register', this.users);
+        alert('Bienvenue!');
+        this.users.username = '';
+        this.users.email = '';
+        this.users.password = '';
+      } catch (error) {
+        console.error('Erreur lors de l"utilisateur:', error);
+      }
+    }
   }
 };
-
-
-    return {
-      username,
-      email,
-      password,
-      handleSubmit,
-      message,
-      alertClass
-    };
-  }
-});
 </script>
 
 <style scoped>

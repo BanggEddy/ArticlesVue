@@ -23,7 +23,7 @@ router.post('/addarticles', async (req, res) => {
   }
 });
 
-router.get('/getarticles', async (req, res) => {
+router.get('/articles', async (req, res) => {
   try {
     const articles = await Article.find();
     res.json(articles);
@@ -32,4 +32,20 @@ router.get('/getarticles', async (req, res) => {
   }
 });
 
+
+router.post('/api/register', async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+    const newUsers = new UsersModelCopy({
+      username,
+      email,
+      password,
+    });
+
+    const savedUsers = await newUsers.save();
+    res.status(201).json(savedUsers);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = router;
