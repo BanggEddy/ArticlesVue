@@ -11,3 +11,4 @@ import { RouterLink, RouterView } from 'vue-router'
 
   <RouterView />
 </template>
+
