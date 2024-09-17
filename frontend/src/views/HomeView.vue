@@ -1,9 +1,12 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+import Index from '../components/Index.vue'
+import Navbar from '../components/bricks/Navbar.vue'
+
 </script>
 
 <template>
   <main>
-    <TheWelcome />
+    <Navbar />
+    <Index />
   </main>
 </template>
