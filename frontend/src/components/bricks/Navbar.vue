@@ -19,8 +19,8 @@
               Ajouter un article
             </RouterLink>
           </li>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Chercher un article" aria-label="Chercher un article">
+          <form class="d-flex" @submit.prevent="searchArticle" role="search">
+            <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Chercher un article" aria-label="Chercher un article">
             <button class="btn btn-pink" type="submit">Chercher</button>
           </form>
         </ul>
@@ -48,12 +48,6 @@
     </div>
   </nav>
 </template>
-
-<script>
-export default {
-  name: 'Navbar',
-}
-</script>
 
 <style scoped>
 .logo-radius {

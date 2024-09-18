@@ -1,12 +1,12 @@
 <script setup>
 import Navbar from '../../components/bricks/Navbar.vue'
-import Register from '../../components/auth/Register.vue';
+import IndexAdmin from '../../components/admin/IndexAdmin.vue'
 
 </script>
 
 <template>
   <main>
     <Navbar />
-    <Register />
+    <IndexAdmin />
   </main>
 </template>
