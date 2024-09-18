@@ -27,7 +27,7 @@
     },
     async created() {
       try {
-        const response = await fetch('http://localhost:3000/getarticles');
+        const response = await fetch('http://localhost:3000/articles');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
