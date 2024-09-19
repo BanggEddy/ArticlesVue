@@ -46,7 +46,6 @@
     methods: {
       async logout() {
         try {
-          await fetch('/api/logout', { method: 'POST' });
           localStorage.removeItem('token'); 
           this.$router.push('/login'); 
         } catch (error) {
