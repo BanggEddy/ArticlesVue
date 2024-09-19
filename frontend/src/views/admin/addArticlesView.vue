@@ -1,14 +1,12 @@
 <script setup>
-import Navbar from '../../components/bricks/Navbar.vue'
-import Register from '../../components/auth/Login.vue';
 import addArticles from '../../components/admin/addArticles.vue';
+import NavbarAdmin from '@/components/bricks/admin/NavbarAdmin.vue';
 
 </script>
 
 <template>
   <main>
-    <Navbar />
+    <NavbarAdmin />
     <addArticles />
-    <Register />
   </main>
 </template>

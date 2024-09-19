@@ -19,10 +19,11 @@
               Ajouter un article
             </RouterLink>
           </li>
-          <form class="d-flex" @submit.prevent="searchArticle" role="search">
-            <input v-model="searchQuery" class="form-control me-2" type="search" placeholder="Chercher un article" aria-label="Chercher un article">
-            <button class="btn btn-pink" type="submit">Chercher</button>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-pink" type="submit">Search</button>
           </form>
+
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
