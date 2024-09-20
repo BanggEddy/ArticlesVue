@@ -17,6 +17,7 @@
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -27,15 +28,29 @@ export default {
       }
     };
   },
+  computed: {
+    ...mapGetters(['isAuthenticated']),
+  },
   methods: {
     async submitForm() {
+      console.log('isAuthenticated:', this.isAuthenticated); // Debugging
+      if (!this.isAuthenticated) {
+        alert('Vous devez être connecté pour ajouter un article.');
+        return;
+      }
+
       try {
-        const response = await axios.post('http://localhost:3000/addarticles', this.article);
+        const response = await axios.post('http://localhost:3000/addarticles', this.article, {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
         alert('Article ajouté avec succès!');
         this.article.namearticle = '';
         this.article.descriptionarticle = '';
       } catch (error) {
         console.error('Erreur lors de l\'ajout de l\'article:', error);
+        alert('Erreur lors de l\'ajout de l\'article. Veuillez réessayer.');
       }
     }
   }
@@ -47,20 +62,12 @@ export default {
   max-width: 600px;
   margin: auto;
   border: 2px solid #f8c6d4; 
-  background-color: #fff0f5; 
 }
 
 input, textarea {
   border-radius: 0.25rem;
   border: 1px solid #f8c6d4;
   box-shadow: none;
-  transition: border-color 0.3s ease-in-out;
-}
-
-input:focus, textarea:focus {
-  border-color: #f8c6d4;
-  box-shadow: 0 0 5px rgba(255, 51, 133, 0.5);
-  outline: none;
 }
 
 .btn-custom {
@@ -69,13 +76,13 @@ input:focus, textarea:focus {
   color: white;
   padding: 10px 20px;
   border-radius: 0.25rem;
-  transition: background-color 0.3s ease-in-out;
   font-size: 1.1rem;
 }
 
 .btn-custom:hover {
   background-color: #f8c6d4;
 }
+
 h1 {
   color: #f8c6d4;
 }

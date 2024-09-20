@@ -44,6 +44,7 @@ const router = createRouter({
   ],
 });
 
+//si pas de token, redirect vers "/"
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem("token");
   if (to.matched.some((record) => record.meta.requiresAuth)) {

@@ -14,11 +14,6 @@
               ArticleVue
             </RouterLink>
           </li>
-          <li class="nav-item">
-            <RouterLink class="nav-link" to="/addarticlesview">
-              Ajouter un article
-            </RouterLink>
-          </li>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-pink" type="submit">Search</button>
