@@ -99,14 +99,4 @@ Le frontend sera accessible à l'adresse : [http://localhost:5173](http://localh
 - `POST /register` : Inscription d'un nouvel utilisateur.
 - `POST /api/login` : Connexion d'un utilisateur avec génération d'un token JWT.
 
-### Configuration
-
- - Les configurations spécifiques du projet se trouvent dans les fichiers suivants :
-
-    Backend : .env pour les variables d'environnement :
-
-    ```bash
-    DATABASE_ACCESS=mongodb+srv://bangeddy:bangeddy@cluster0.mkhxfkw.mongodb.net/articlevue?retryWrites=true&w=majority
-    JWT_SECRET="pqodpqosPOQSDKPQOKdqkd"
-    ```
     
