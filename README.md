@@ -110,7 +110,3 @@ Le frontend sera accessible à l'adresse : [http://localhost:5173](http://localh
     JWT_SECRET="pqodpqosPOQSDKPQOKdqkd"
     ```
     
-Frontend : vite.config.js pour la configuration du projet Vue.js.
-
-```bash
-npm run test
