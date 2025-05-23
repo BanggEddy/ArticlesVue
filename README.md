@@ -22,17 +22,9 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale :
+1. Clonez ce dépôt sur votre machine locale 
 
-    ```bash
-    git clone https://github.com/votre-utilisateur/votre-repo.git
-    ```
-
-2. Accédez au répertoire du projet :
-
-    ```bash
-    cd votre-repo
-    ```
+2. Accédez au répertoire du projet 
 
 ### Installation du Backend (Express.js)
 
@@ -51,8 +43,8 @@ Avant de commencer, assurez-vous d'avoir les éléments suivants installés :
 3. Configurez les variables d'environnement dans un fichier `.env` :
 
     ```bash
-    DATABASE_ACCESS=mongodb+srv://bangeddy:bangeddy@cluster0.mkhxfkw.mongodb.net/articlevue?retryWrites=true&w=majority
-    JWT_SECRET="pqodpqosPOQSDKPQOKdqkd"
+    DATABASE_ACCESS=mongodb+srv://----:----@cluster0.mkhxfkw.mongodb.net/----?retryWrites=true&w=majority
+    JWT_SECRET="----"
     ```
 
 4. Démarrez le serveur Express :
